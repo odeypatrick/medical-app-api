@@ -25,6 +25,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use(morgan('dev'))
 app.use(cors())
 
+app.use('/api', require('./routes/api/patient'))
+
 const server = http.Server(app);
 const port = process.env.PORT;
 

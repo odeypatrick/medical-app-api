@@ -4,7 +4,7 @@ const { createNewPatient, getAllPatients, getPatientDetails } = require('../../c
 const { isAuthenticated } = require('../../controllers/users')
 
 router.post('/patient', isAuthenticated, createNewPatient) // add new patient route
-router.get('/patients', isAuthenticated, getAllPatients) // get all patients route
+router.get('/patients', getAllPatients) // get all patients route
 router.post('/patient/:id', isAuthenticated, getPatientDetails) // get patient details route
 
 module.exports = router;

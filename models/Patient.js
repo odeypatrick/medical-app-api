@@ -1,20 +1,20 @@
 const Sequelize = require('sequelize');
-const db = require('../config/database');
+const db = require('../config/db');
 
 const Patient = db.define('user', {
-  firstname: {
+  firstName: {
     type: Sequelize.STRING
   },
-  lastname: {
+  lastName: {
     type: Sequelize.STRING
   },
-  email: {
+  middleName: {
     type: Sequelize.STRING
   },
-  age: {
-    type: Sequelize.STRING
+  dob: {
+    type: Sequelize.DATE
   },
-  phone: {
+  phoneNumber: {
     type: Sequelize.STRING
   },
   gender: {
