@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-module.exports =  new Sequelize('apple', 'postgres', '', {
+module.exports =  new Sequelize('ehealth', 'postgres', '', {
   host: 'localhost',
   dialect: 'postgres',
   operatorsAliases: false,

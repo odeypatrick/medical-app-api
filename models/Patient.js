@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
 
-const Patient = db.define('user', {
+const Patient = db.define('patient', {
   firstName: {
     type: Sequelize.STRING
   },
@@ -9,6 +9,9 @@ const Patient = db.define('user', {
     type: Sequelize.STRING
   },
   middleName: {
+    type: Sequelize.STRING
+  },
+  patientId: {
     type: Sequelize.STRING
   },
   dob: {
