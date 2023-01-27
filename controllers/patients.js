@@ -14,6 +14,11 @@ exports.createNewPatient = async (req, res) => {
             return res.sendStatus(401)
         }
 
+        // Validate fields
+        if(!firstName || !lastName || !middleName || !gender || !dob || !phoneNumber) {
+            return res.status(403).json({ code: 200, message: "Enter all fields!" })
+        }
+
         // Insert into table
         const patient  = await Patient.create({
             firstName,
@@ -51,7 +56,6 @@ exports.getAllPatients = (req, res) => {
         })
     })
     .catch(err => {
-        console.log(err)
         res.sendStatus(500)
     })
 }
@@ -79,7 +83,6 @@ exports.getPatientDetails = (req, res) => {
         })
     })
     .catch(err => {
-        console.log(err)
         res.sendStatus(500)
     })
 }

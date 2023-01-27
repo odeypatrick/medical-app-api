@@ -3,25 +3,32 @@ const db = require('../config/db');
 
 const User = db.define('user', {
   userId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   firstName: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   lastName: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   email: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true
   },
   department: {
     type: Sequelize.STRING
   },
   password: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   role: {
-    type: Sequelize.STRING
+    type: Sequelize.ENUM("Clerk", "Nurse"),
+    allowNull: false
   }
 });
 

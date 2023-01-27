@@ -1,7 +1,7 @@
 const Vital = require("../models/Vital");
 
 exports.addVitals = async (req, res) => {
-    let { date, temperature, height, bloodPressure, pulseRate, bmi, weight } = req.body;
+    let { temperature, height, bloodPressure, pulseRate, bmi, weight } = req.body;
   
     try {
         // Prevent any other users  apart from Nurses from accessing this resource
@@ -9,10 +9,14 @@ exports.addVitals = async (req, res) => {
             return res.sendStatus(401)
         }
 
+        // Validate fields
+        if(!temperature || !height || !bloodPressure || !pulseRate || !bmi || !weight) {
+            return res.status(403).json({ code: 200, message: "Enter all fields!" })
+        }
+
         // Insert into table
         const vital  = await Vital.create({
             temperature,
-            date,
             patientId: req.params.id,
             height,
             weight,
@@ -27,14 +31,11 @@ exports.addVitals = async (req, res) => {
         })
     }
     catch(error){
+        console.log(error)
         res.status(500).json({
             code: 500,
-            message: "Operation successful",
+            message: "Something went wrong",
             error
         })
     }
-}
-
-exports.deleteVital = () => {
-
 }

@@ -7,6 +7,11 @@ exports.createUser = async (req, res) => {
     const { firstName, lastName, email, department, password, role } = req.body
 
     try {
+        // Validate fields
+        if(!firstName || !lastName || !email || !password || !role) {
+            return res.status(403).json({ code: 200, message: "Enter all fields!" })
+        }
+
         // Validate if user is already registered
         const isUser = await User.findOne({ where: { email }})
         if(isUser){
